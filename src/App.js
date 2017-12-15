@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <BrowserRouter basename="catch-of-the-day">
         <Switch>
-          <Route exactly pattern="/" component={Main} />
+          <Route exact path="/" component={Main} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
