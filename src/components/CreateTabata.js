@@ -5,7 +5,6 @@ import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
-import { List } from 'material-ui/List';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 
@@ -18,6 +17,22 @@ class CreateTabata extends Component {
     router: PropTypes.object
   };
 
+  saveTabata() {
+    console.log('save tabata');
+    const tabata = {
+      name: this.workoutName.input.value,
+      warmupTime: this.warmupTime.input.value,
+      workoutTime: this.workoutTime.input.value,
+      relaxTime: this.relaxTime.input.value,
+      breakTime: this.breakTime.input.value,
+      cooldownTime: this.cooldownTime.input.value,
+      reps: this.reps.input.value,
+      sets: this.sets.input.value
+    };
+    this.props.addTabata(tabata);
+    this.context.router.history.goBack();
+  }
+
   render() {
     return (
       <MuiThemeProvider>
@@ -29,30 +44,68 @@ class CreateTabata extends Component {
                 <NavigationArrowBack />
               </IconButton>
             }
-            iconElementRight={<FlatButton label="Save" />}
+            iconElementRight={
+              <FlatButton label="Save" onClick={e => this.saveTabata(e)} />
+            }
           />
           <Paper style={style} zDepth={1}>
             <div style={style}>
               <TextField
                 floatingLabelText="Workout Name"
                 floatingLabelFixed={true}
+                ref={input => {
+                  this.workoutName = input;
+                }}
               />
               <TextField
                 floatingLabelText="Warm Up"
                 floatingLabelFixed={true}
+                ref={input => {
+                  this.warmupTime = input;
+                }}
               />
               <TextField
                 floatingLabelText="Work Out"
                 floatingLabelFixed={true}
+                ref={input => {
+                  this.workoutTime = input;
+                }}
               />
-              <TextField floatingLabelText="Relax" floatingLabelFixed={true} />
-              <TextField floatingLabelText="Break" floatingLabelFixed={true} />
+              <TextField
+                floatingLabelText="Relax"
+                floatingLabelFixed={true}
+                ref={input => {
+                  this.relaxTime = input;
+                }}
+              />
+              <TextField
+                floatingLabelText="Break"
+                floatingLabelFixed={true}
+                ref={input => {
+                  this.breakTime = input;
+                }}
+              />
               <TextField
                 floatingLabelText="Cool Down"
                 floatingLabelFixed={true}
+                ref={input => {
+                  this.cooldownTime = input;
+                }}
               />
-              <TextField floatingLabelText="Reps" floatingLabelFixed={true} />
-              <TextField floatingLabelText="Sets" floatingLabelFixed={true} />
+              <TextField
+                floatingLabelText="Reps"
+                floatingLabelFixed={true}
+                ref={input => {
+                  this.reps = input;
+                }}
+              />
+              <TextField
+                floatingLabelText="Sets"
+                floatingLabelFixed={true}
+                ref={input => {
+                  this.sets = input;
+                }}
+              />
             </div>
           </Paper>
         </div>
