@@ -23,7 +23,7 @@ class CreateTabata extends Component {
       name: this.workoutName.input.value,
       warmupTime: this.warmupTime.input.value,
       workoutTime: this.workoutTime.input.value,
-      relaxTime: this.relaxTime.input.value,
+      restTime: this.restTime.input.value,
       breakTime: this.breakTime.input.value,
       cooldownTime: this.cooldownTime.input.value,
       reps: this.reps.input.value,
@@ -72,10 +72,10 @@ class CreateTabata extends Component {
                 }}
               />
               <TextField
-                floatingLabelText="Relax"
+                floatingLabelText="Rest"
                 floatingLabelFixed={true}
                 ref={input => {
-                  this.relaxTime = input;
+                  this.restTime = input;
                 }}
               />
               <TextField
