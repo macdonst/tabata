@@ -4,6 +4,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import { Route } from 'react-router-dom';
+import TabataList from './TabataList';
+import PropTypes from 'prop-types';
 
 const style = {
   margin: 0,
@@ -41,11 +43,16 @@ class Main extends Component {
       <MuiThemeProvider>
         <div>
           <AppBar title="Tabata" />
+          <TabataList tabatas={this.props.tabatas} />
           {this.renderFAB()}
         </div>
       </MuiThemeProvider>
     );
   }
 }
+
+Main.propTypes = {
+  tabatas: PropTypes.object.isRequired
+};
 
 export default Main;

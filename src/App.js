@@ -59,7 +59,11 @@ class App extends Component {
     return (
       <BrowserRouter basename="catch-of-the-day">
         <Switch>
-          <Route exact path="/" component={Main} />
+          <Route
+            exact
+            path="/"
+            render={() => <Main tabatas={this.state.tabatas} />}
+          />
           <Route
             path="/create"
             render={() => <CreateTabata addTabata={this.addTabata} />}
