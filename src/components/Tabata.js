@@ -3,6 +3,8 @@ import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import IconButton from 'material-ui/IconButton';
+import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 
 const style = {
   margin: 0,
@@ -14,9 +16,9 @@ const style = {
 };
 
 class Tabata extends Component {
-  constructor() {
-    super();
-  }
+  static contextTypes = {
+    router: PropTypes.object
+  };
 
   render() {
     const tabata = this.props.getTabata(this.props.match.params.id);
@@ -25,7 +27,14 @@ class Tabata extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <AppBar title={tabata.name} />
+          <AppBar
+            iconElementLeft={
+              <IconButton onClick={this.context.router.history.goBack}>
+                <NavigationArrowBack />
+              </IconButton>
+            }
+            title={tabata.name}
+          />
         </div>
       </MuiThemeProvider>
     );
