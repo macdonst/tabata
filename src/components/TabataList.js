@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from 'material-ui/Paper';
 import PropTypes from 'prop-types';
 import { List, ListItem } from 'material-ui/List';
+import { Route } from 'react-router-dom';
 
 const style = {
   margin: 20
@@ -15,14 +16,26 @@ class TabataList extends Component {
 
   renderTabatas(key) {
     const tabata = this.props.tabatas[key];
-    console.log(tabata);
-    return <ListItem>{tabata.name}</ListItem>;
+    return (
+      <Route
+        render={({ history }) => (
+          <ListItem
+            onClick={event => {
+              console.log('list item clicked ' + key);
+              history.push(`/tabata/${key}`);
+            }}
+          >
+            {tabata.name}
+          </ListItem>
+        )}
+      />
+    );
   }
 
   render() {
     return (
       <Paper style={style} zDepth={1}>
-        <List>{Object.keys(this.props.tabatas).map(this.renderTabatas)}</List>
+        <List>{Object.keys(this.props.tabatas).map(this.renderTabatas)} </List>
       </Paper>
     );
   }

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Main from './components/Main';
 import NotFound from './components/NotFound';
 import CreateTabata from './components/CreateTabata';
+import Tabata from './components/Tabata';
 
 import logo from './logo.svg';
 import './App.css';
@@ -15,6 +16,7 @@ class App extends Component {
     this.addTabata = this.addTabata.bind(this);
     this.updateTabata = this.updateTabata.bind(this);
     this.removeTabata = this.removeTabata.bind(this);
+    this.getTabata = this.getTabata.bind(this);
 
     this.state = {
       tabatas: {}
@@ -55,6 +57,11 @@ class App extends Component {
     this.setState({ tabatas: tabatas });
   }
 
+  getTabata(key) {
+    const tabatas = { ...this.state.tabatas };
+    return tabatas[key];
+  }
+
   render() {
     return (
       <BrowserRouter basename="catch-of-the-day">
@@ -67,6 +74,10 @@ class App extends Component {
           <Route
             path="/create"
             render={() => <CreateTabata addTabata={this.addTabata} />}
+          />
+          <Route
+            path="/tabata/:id"
+            render={props => <Tabata getTabata={this.getTabata} {...props} />}
           />
           <Route component={NotFound} />
         </Switch>
