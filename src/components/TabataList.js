@@ -18,6 +18,7 @@ class TabataList extends Component {
     const tabata = this.props.tabatas[key];
     return (
       <Route
+        key={key}
         render={({ history }) => (
           <ListItem
             onClick={event => {
