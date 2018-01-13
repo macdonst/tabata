@@ -60,7 +60,7 @@ class App extends Component {
 
   getTabata(key) {
     const tabatas = { ...this.state.tabatas };
-    return tabatas[key];
+    return tabatas[key] || {};
   }
 
   render() {

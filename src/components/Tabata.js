@@ -43,7 +43,7 @@ class Tabata extends Component {
   deleteTabata() {
     this.handleClose();
     this.context.router.history.goBack();
-    // this.props.removeTabata(this.props.match.params.id);
+    this.props.removeTabata(this.props.match.params.id);
   }
 
   render() {
