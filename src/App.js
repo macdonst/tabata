@@ -54,6 +54,7 @@ class App extends Component {
   removeTabata(key) {
     const tabatas = { ...this.state.tabatas };
     tabatas[key] = null;
+    delete tabatas[key];
     this.setState({ tabatas: tabatas });
   }
 
@@ -77,7 +78,13 @@ class App extends Component {
           />
           <Route
             path="/tabata/:id"
-            render={props => <Tabata getTabata={this.getTabata} {...props} />}
+            render={props => (
+              <Tabata
+                getTabata={this.getTabata}
+                removeTabata={this.removeTabata}
+                {...props}
+              />
+            )}
           />
           <Route component={NotFound} />
         </Switch>
