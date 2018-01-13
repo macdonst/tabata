@@ -28,8 +28,14 @@ class Tabata extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.deleteTabata = this.deleteTabata.bind(this);
     this.state = {
-      open: false
+      open: false,
+      tabata: null
     };
+  }
+
+  componentWillMount() {
+    const tabata = this.props.getTabata(this.props.match.params.id);
+    this.setState({ tabata: tabata });
   }
 
   handleOpen() {
@@ -47,10 +53,6 @@ class Tabata extends Component {
   }
 
   render() {
-    const tabata = this.props.getTabata(this.props.match.params.id);
-    console.log(tabata);
-    console.log(this.props.match.params.id);
-
     const actions = [
       <FlatButton label="Cancel" primary={true} onClick={this.handleClose} />,
       <FlatButton label="OK" primary={true} onClick={this.deleteTabata} />
@@ -70,7 +72,7 @@ class Tabata extends Component {
                 <DeleteIcon />
               </IconButton>
             }
-            title={tabata.name}
+            title={this.state.tabata.name}
           />
           <Dialog
             title="Delete Tabata"
