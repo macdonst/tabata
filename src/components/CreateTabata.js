@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
+import NumberSelectField from './NumberSelectField';
 
 const style = {
   margin: 20
@@ -19,15 +20,16 @@ class CreateTabata extends Component {
 
   saveTabata() {
     console.log('save tabata');
+    console.log(this.warmupTime);
     const tabata = {
       name: this.workoutName.input.value,
-      warmupTime: this.warmupTime.input.value,
-      workoutTime: this.workoutTime.input.value,
-      restTime: this.restTime.input.value,
-      breakTime: this.breakTime.input.value,
-      cooldownTime: this.cooldownTime.input.value,
-      reps: this.reps.input.value,
-      sets: this.sets.input.value
+      warmupTime: this.warmupTime.state.value,
+      workoutTime: this.workoutTime.state.value,
+      restTime: this.restTime.state.value,
+      breakTime: this.breakTime.state.value,
+      cooldownTime: this.cooldownTime.state.value,
+      reps: this.reps.state.value,
+      sets: this.sets.state.value
     };
     this.props.addTabata(tabata);
     this.context.router.history.goBack();
@@ -57,35 +59,35 @@ class CreateTabata extends Component {
                   this.workoutName = input;
                 }}
               />
-              <TextField
+              <NumberSelectField
                 floatingLabelText="Warm Up"
                 floatingLabelFixed={true}
                 ref={input => {
                   this.warmupTime = input;
                 }}
               />
-              <TextField
+              <NumberSelectField
                 floatingLabelText="Work Out"
                 floatingLabelFixed={true}
                 ref={input => {
                   this.workoutTime = input;
                 }}
               />
-              <TextField
+              <NumberSelectField
                 floatingLabelText="Rest"
                 floatingLabelFixed={true}
                 ref={input => {
                   this.restTime = input;
                 }}
               />
-              <TextField
+              <NumberSelectField
                 floatingLabelText="Break"
                 floatingLabelFixed={true}
                 ref={input => {
                   this.breakTime = input;
                 }}
               />
-              <TextField
+              <NumberSelectField
                 floatingLabelText="Cool Down"
                 floatingLabelFixed={true}
                 ref={input => {

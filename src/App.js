@@ -82,6 +82,7 @@ class App extends Component {
               <Tabata
                 getTabata={this.getTabata}
                 removeTabata={this.removeTabata}
+                updateTabata={this.updateTabata}
                 {...props}
               />
             )}
