@@ -78,14 +78,17 @@ class App extends Component {
           />
           <Route
             path="/tabata/:id"
-            render={props => (
-              <Tabata
-                getTabata={this.getTabata}
-                removeTabata={this.removeTabata}
-                updateTabata={this.updateTabata}
-                {...props}
-              />
-            )}
+            render={props => {
+              const tabata = this.getTabata(props.match.params.id);
+              return (
+                <Tabata
+                  tabata={tabata}
+                  removeTabata={this.removeTabata}
+                  updateTabata={this.updateTabata}
+                  {...props}
+                />
+              );
+            }}
           />
           <Route component={NotFound} />
         </Switch>

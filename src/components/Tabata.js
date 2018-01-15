@@ -34,8 +34,7 @@ class Tabata extends Component {
   }
 
   componentWillMount() {
-    const tabata = this.props.getTabata(this.props.match.params.id);
-    this.setState({ tabata: tabata });
+    this.setState({ tabata: this.props.tabata });
   }
 
   handleOpen() {
