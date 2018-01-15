@@ -34,9 +34,16 @@ class TabataList extends Component {
   }
 
   render() {
+    let list = null;
+    let keys = Object.keys(this.props.tabatas);
+    if (keys.length > 0) {
+      list = <List>{keys.map(this.renderTabatas)}</List>;
+    } else {
+      list = <span>Create a tabata</span>;
+    }
     return (
       <Paper style={style} zDepth={1}>
-        <List>{Object.keys(this.props.tabatas).map(this.renderTabatas)} </List>
+        {list}
       </Paper>
     );
   }
