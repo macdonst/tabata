@@ -28,8 +28,8 @@ class CreateTabata extends Component {
       restTime: this.restTime.state.value,
       breakTime: this.breakTime.state.value,
       cooldownTime: this.cooldownTime.state.value,
-      reps: this.reps.state.value,
-      sets: this.sets.state.value
+      reps: this.reps.input.value,
+      sets: this.sets.input.value
     };
     this.props.addTabata(tabata);
     this.context.router.history.goBack();
@@ -100,6 +100,7 @@ class CreateTabata extends Component {
                 ref={input => {
                   this.reps = input;
                 }}
+                type="number"
               />
               <TextField
                 floatingLabelText="Sets"
@@ -107,6 +108,7 @@ class CreateTabata extends Component {
                 ref={input => {
                   this.sets = input;
                 }}
+                type="number"
               />
             </div>
           </Paper>
