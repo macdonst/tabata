@@ -16,7 +16,7 @@ const style = {
   position: 'fixed'
 };
 
-class Main extends Component {
+class MainPage extends Component {
   constructor() {
     super();
     this.renderFAB = this.renderFAB.bind(this);
@@ -51,8 +51,8 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = {
+MainPage.propTypes = {
   tabatas: PropTypes.object.isRequired
 };
 
-export default Main;
+export default MainPage;

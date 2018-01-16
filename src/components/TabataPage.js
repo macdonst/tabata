@@ -17,7 +17,7 @@ const style = {
   position: 'fixed'
 };
 
-class Tabata extends Component {
+class TabataPage extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
@@ -87,4 +87,4 @@ class Tabata extends Component {
   }
 }
 
-export default Tabata;
+export default TabataPage;

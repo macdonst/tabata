@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Main from './components/Main';
+import MainPage from './components/MainPage';
 import NotFound from './components/NotFound';
-import CreateTabata from './components/CreateTabata';
-import Tabata from './components/Tabata';
+import CreateTabataPage from './components/CreateTabataPage';
+import TabataPage from './components/TabataPage';
 
 import logo from './logo.svg';
 import './App.css';
@@ -70,18 +70,18 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <Main tabatas={this.state.tabatas} />}
+            render={() => <MainPage tabatas={this.state.tabatas} />}
           />
           <Route
             path="/create"
-            render={() => <CreateTabata addTabata={this.addTabata} />}
+            render={() => <CreateTabataPage addTabata={this.addTabata} />}
           />
           <Route
             path="/tabata/:id"
             render={props => {
               const tabata = this.getTabata(props.match.params.id);
               return (
-                <Tabata
+                <TabataPage
                   tabata={tabata}
                   removeTabata={this.removeTabata}
                   updateTabata={this.updateTabata}

@@ -13,7 +13,7 @@ const style = {
   margin: 20
 };
 
-class CreateTabata extends Component {
+class CreateTabataPage extends Component {
   static contextTypes = {
     router: PropTypes.object
   };
@@ -118,4 +118,4 @@ class CreateTabata extends Component {
   }
 }
 
-export default CreateTabata;
+export default CreateTabataPage;
