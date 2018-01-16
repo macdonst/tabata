@@ -65,7 +65,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter basename="catch-of-the-day">
+      <BrowserRouter>
         <Switch>
           <Route
             exact
