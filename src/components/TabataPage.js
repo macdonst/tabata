@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import Dialog from 'material-ui/Dialog';
+import Tabata from './Tabata';
 
 const style = {
   margin: 0,
@@ -73,6 +74,7 @@ class TabataPage extends Component {
             }
             title={this.state.tabata.name}
           />
+          <Tabata tabata={this.state.tabata} />
           <Dialog
             title="Delete Tabata"
             modal={true}
