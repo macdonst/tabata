@@ -39,11 +39,11 @@ class MainPage extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <AppBar title="Tabata" />
         <TabataList tabatas={this.props.tabatas} />
         {this.renderFAB()}
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -36,7 +36,7 @@ class CreateTabataPage extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <AppBar
           title="Create Tabata"
           iconElementLeft={
@@ -110,7 +110,7 @@ class CreateTabataPage extends Component {
             />
           </div>
         </Paper>
-      </div>
+      </React.Fragment>
     );
   }
 }

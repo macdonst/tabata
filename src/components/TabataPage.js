@@ -58,7 +58,7 @@ class TabataPage extends Component {
     ];
 
     return (
-      <div>
+      <React.Fragment>
         <AppBar
           iconElementLeft={
             <IconButton onClick={this.context.router.history.goBack}>
@@ -81,7 +81,7 @@ class TabataPage extends Component {
         >
           Are you sure you want to remove this Tabata?
         </Dialog>
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -88,7 +88,7 @@ class Tabata extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Paper style={style} zDepth={1}>
           <ReactCountdownClock
             seconds={this.state.seconds}
@@ -114,7 +114,7 @@ class Tabata extends Component {
           style={btnStyle}
           onClick={this.togglePause}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }
