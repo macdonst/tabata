@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
@@ -37,83 +36,81 @@ class CreateTabataPage extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <div>
-          <AppBar
-            title="Create Tabata"
-            iconElementLeft={
-              <IconButton onClick={this.context.router.history.goBack}>
-                <NavigationArrowBack />
-              </IconButton>
-            }
-            iconElementRight={
-              <FlatButton label="Save" onClick={e => this.saveTabata(e)} />
-            }
-          />
-          <Paper style={style} zDepth={1}>
-            <div style={style}>
-              <TextField
-                floatingLabelText="Workout Name"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.workoutName = input;
-                }}
-              />
-              <NumberSelectField
-                floatingLabelText="Warm Up"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.warmupTime = input;
-                }}
-              />
-              <NumberSelectField
-                floatingLabelText="Work Out"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.workoutTime = input;
-                }}
-              />
-              <NumberSelectField
-                floatingLabelText="Rest"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.restTime = input;
-                }}
-              />
-              <NumberSelectField
-                floatingLabelText="Break"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.breakTime = input;
-                }}
-              />
-              <NumberSelectField
-                floatingLabelText="Cool Down"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.cooldownTime = input;
-                }}
-              />
-              <TextField
-                floatingLabelText="Reps"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.reps = input;
-                }}
-                type="number"
-              />
-              <TextField
-                floatingLabelText="Sets"
-                floatingLabelFixed={true}
-                ref={input => {
-                  this.sets = input;
-                }}
-                type="number"
-              />
-            </div>
-          </Paper>
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <AppBar
+          title="Create Tabata"
+          iconElementLeft={
+            <IconButton onClick={this.context.router.history.goBack}>
+              <NavigationArrowBack />
+            </IconButton>
+          }
+          iconElementRight={
+            <FlatButton label="Save" onClick={e => this.saveTabata(e)} />
+          }
+        />
+        <Paper style={style} zDepth={1}>
+          <div style={style}>
+            <TextField
+              floatingLabelText="Workout Name"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.workoutName = input;
+              }}
+            />
+            <NumberSelectField
+              floatingLabelText="Warm Up"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.warmupTime = input;
+              }}
+            />
+            <NumberSelectField
+              floatingLabelText="Work Out"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.workoutTime = input;
+              }}
+            />
+            <NumberSelectField
+              floatingLabelText="Rest"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.restTime = input;
+              }}
+            />
+            <NumberSelectField
+              floatingLabelText="Break"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.breakTime = input;
+              }}
+            />
+            <NumberSelectField
+              floatingLabelText="Cool Down"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.cooldownTime = input;
+              }}
+            />
+            <TextField
+              floatingLabelText="Reps"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.reps = input;
+              }}
+              type="number"
+            />
+            <TextField
+              floatingLabelText="Sets"
+              floatingLabelFixed={true}
+              ref={input => {
+                this.sets = input;
+              }}
+              type="number"
+            />
+          </div>
+        </Paper>
+      </div>
     );
   }
 }

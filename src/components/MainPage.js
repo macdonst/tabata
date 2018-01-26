@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import { Route } from 'react-router-dom';
@@ -40,13 +39,11 @@ class MainPage extends Component {
 
   render() {
     return (
-      <MuiThemeProvider>
-        <div>
-          <AppBar title="Tabata" />
-          <TabataList tabatas={this.props.tabatas} />
-          {this.renderFAB()}
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <AppBar title="Tabata" />
+        <TabataList tabatas={this.props.tabatas} />
+        {this.renderFAB()}
+      </div>
     );
   }
 }

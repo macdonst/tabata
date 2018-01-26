@@ -4,6 +4,7 @@ import MainPage from './components/MainPage';
 import NotFound from './components/NotFound';
 import CreateTabataPage from './components/CreateTabataPage';
 import TabataPage from './components/TabataPage';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import logo from './logo.svg';
 import './App.css';
@@ -65,34 +66,36 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <MainPage tabatas={this.state.tabatas} />}
-          />
-          <Route
-            path="/create"
-            render={() => <CreateTabataPage addTabata={this.addTabata} />}
-          />
-          <Route
-            path="/tabata/:id"
-            render={props => {
-              const tabata = this.getTabata(props.match.params.id);
-              return (
-                <TabataPage
-                  tabata={tabata}
-                  removeTabata={this.removeTabata}
-                  updateTabata={this.updateTabata}
-                  {...props}
-                />
-              );
-            }}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
+      <MuiThemeProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <MainPage tabatas={this.state.tabatas} />}
+            />
+            <Route
+              path="/create"
+              render={() => <CreateTabataPage addTabata={this.addTabata} />}
+            />
+            <Route
+              path="/tabata/:id"
+              render={props => {
+                const tabata = this.getTabata(props.match.params.id);
+                return (
+                  <TabataPage
+                    tabata={tabata}
+                    removeTabata={this.removeTabata}
+                    updateTabata={this.updateTabata}
+                    {...props}
+                  />
+                );
+              }}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </BrowserRouter>
+      </MuiThemeProvider>
     );
   }
 }

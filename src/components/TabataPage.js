@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
@@ -59,32 +58,30 @@ class TabataPage extends Component {
     ];
 
     return (
-      <MuiThemeProvider>
-        <div>
-          <AppBar
-            iconElementLeft={
-              <IconButton onClick={this.context.router.history.goBack}>
-                <NavigationArrowBack />
-              </IconButton>
-            }
-            iconElementRight={
-              <IconButton onClick={this.handleOpen}>
-                <DeleteIcon />
-              </IconButton>
-            }
-            title={this.state.tabata.name}
-          />
-          <Tabata tabata={this.state.tabata} />
-          <Dialog
-            title="Delete Tabata"
-            modal={true}
-            open={this.state.open}
-            actions={actions}
-          >
-            Are you sure you want to remove this Tabata?
-          </Dialog>
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <AppBar
+          iconElementLeft={
+            <IconButton onClick={this.context.router.history.goBack}>
+              <NavigationArrowBack />
+            </IconButton>
+          }
+          iconElementRight={
+            <IconButton onClick={this.handleOpen}>
+              <DeleteIcon />
+            </IconButton>
+          }
+          title={this.state.tabata.name}
+        />
+        <Tabata tabata={this.state.tabata} />
+        <Dialog
+          title="Delete Tabata"
+          modal={true}
+          open={this.state.open}
+          actions={actions}
+        >
+          Are you sure you want to remove this Tabata?
+        </Dialog>
+      </div>
     );
   }
 }
