@@ -50,7 +50,7 @@ class Tabata extends Component {
       seconds: tabata.warmupTime
     });
     for (let i = 0; i < tabata.sets; i++) {
-      for (let j = 0; j < tabata.reps; j++) {
+      for (let j = 0; j < tabata.rounds; j++) {
         workout.push({
           color: '#0f0',
           phase: 'workout',

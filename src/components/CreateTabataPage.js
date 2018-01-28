@@ -27,7 +27,7 @@ class CreateTabataPage extends Component {
       restTime: this.restTime.state.value,
       breakTime: this.breakTime.state.value,
       cooldownTime: this.cooldownTime.state.value,
-      reps: this.reps.input.value,
+      rounds: this.rounds.input.value,
       sets: this.sets.input.value
     };
     this.props.addTabata(tabata);
@@ -96,7 +96,7 @@ class CreateTabataPage extends Component {
               floatingLabelText="Rounds"
               floatingLabelFixed={true}
               ref={input => {
-                this.reps = input;
+                this.rounds = input;
               }}
               type="number"
             />
