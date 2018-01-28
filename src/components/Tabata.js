@@ -45,31 +45,31 @@ class Tabata extends Component {
   createWorkout(tabata) {
     const workout = [];
     workout.push({
-      color: '#0f0',
+      color: '#800080',
       phase: 'warmup',
       seconds: tabata.warmupTime
     });
     for (let i = 0; i < tabata.sets; i++) {
       for (let j = 0; j < tabata.reps; j++) {
         workout.push({
-          color: '#f00',
+          color: '#0f0',
           phase: 'workout',
           seconds: tabata.workoutTime + 0.0000001
         });
         workout.push({
-          color: '#ff0',
+          color: '#f00',
           phase: 'rest',
           seconds: tabata.restTime + 0.0000002
         });
       }
       workout.push({
-        color: '#ff0',
+        color: '#00f',
         phase: 'break',
         seconds: tabata.breakTime + 0.0000003
       });
     }
     workout.push({
-      color: '#0f0',
+      color: '#800080',
       phase: 'cooldown',
       seconds: tabata.cooldownTime + 0.0000004
     });
