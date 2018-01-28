@@ -93,7 +93,7 @@ class CreateTabataPage extends Component {
               }}
             />
             <TextField
-              floatingLabelText="Reps"
+              floatingLabelText="Rounds"
               floatingLabelFixed={true}
               ref={input => {
                 this.reps = input;
