@@ -26,13 +26,13 @@ class Tabata extends Component {
     this.progress = this.progress.bind(this);
     this.togglePause = this.togglePause.bind(this);
     this.createWorkout = this.createWorkout.bind(this);
+    this.renderRounds = this.renderRounds.bind(this);
     this.state = {
       color: '#000',
       alpha: 0.9,
       paused: true,
       phase: 'warmup',
-      completedSets: 0,
-      completedReps: 0
+      completedRounds: 0
     };
   }
 
@@ -77,13 +77,33 @@ class Tabata extends Component {
   }
 
   progress() {
-    this.setState(this.workout.shift());
+    const current = this.workout.shift();
+    if (current.phase === 'workout') {
+      const rounds = this.state.completedRounds + 1;
+      this.setState({ completedRounds: rounds });
+    } else if (current.phase === 'break') {
+      this.setState({ completedRounds: 0 });
+    }
+    this.setState(current);
   }
 
   togglePause() {
     this.setState({
       paused: !this.state.paused
     });
+  }
+
+  renderRounds() {
+    const currentPhase = this.state.phase;
+    if (currentPhase && currentPhase !== 'workout' && currentPhase !== 'rest') {
+      return <span>&nbsp;</span>;
+    } else {
+      return (
+        <span>
+          {this.state.completedRounds}/{this.props.tabata.rounds}
+        </span>
+      );
+    }
   }
 
   render() {
@@ -98,7 +118,10 @@ class Tabata extends Component {
             paused={this.state.paused}
             onComplete={this.progress}
           />
-          <h1 style={divStyle}>{this.state.phase}</h1>
+          <h1 style={divStyle}>
+            {this.state.phase}
+            {this.renderRounds()}
+          </h1>
         </Paper>
         <RaisedButton
           label="Start"
