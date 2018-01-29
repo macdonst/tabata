@@ -110,14 +110,16 @@ class Tabata extends Component {
     return (
       <React.Fragment>
         <Paper style={style} zDepth={1}>
-          <ReactCountdownClock
-            seconds={this.state.seconds}
-            color={this.state.color}
-            alpha={this.state.alpha}
-            size={300}
-            paused={this.state.paused}
-            onComplete={this.progress}
-          />
+          <div style={{ width: '300px', height: '300px', margin: '0 auto' }}>
+            <ReactCountdownClock
+              seconds={this.state.seconds}
+              color={this.state.color}
+              alpha={this.state.alpha}
+              size={300}
+              paused={this.state.paused}
+              onComplete={this.progress}
+            />
+          </div>
           <h1 style={divStyle}>
             {this.state.phase}
             {this.renderRounds()}
