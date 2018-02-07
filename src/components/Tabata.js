@@ -17,7 +17,9 @@ const btnStyle = {
 
 const divStyle = {
   textAlign: 'center',
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
+  fontSize: '150%',
+  fontWeight: 'bold'
 };
 
 class Tabata extends Component {
@@ -100,7 +102,7 @@ class Tabata extends Component {
     } else {
       return (
         <span>
-          {this.state.completedRounds}/{this.props.tabata.rounds}
+          {this.state.completedRounds} of {this.props.tabata.rounds}
         </span>
       );
     }
@@ -120,10 +122,11 @@ class Tabata extends Component {
               onComplete={this.progress}
             />
           </div>
-          <h1 style={divStyle}>
+          <p style={divStyle}>
             {this.state.phase}
+            <br />
             {this.renderRounds()}
-          </h1>
+          </p>
         </Paper>
         <RaisedButton
           label="Start"
