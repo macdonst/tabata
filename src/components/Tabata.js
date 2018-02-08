@@ -91,13 +91,9 @@ class Tabata extends Component {
   }
 
   handleSecond(second) {
-    console.log(second);
     if (second <= 3 && second >= 1) {
-      console.log('beep');
       this.beep.play();
-    }
-    if (second === 0) {
-      console.log('play done');
+    } else if (second === 0) {
       this.chime.play();
     }
   }
@@ -134,6 +130,7 @@ class Tabata extends Component {
               paused={this.state.paused}
               onComplete={this.progress}
               onSecond={this.handleSecond}
+              showMilliseconds="false"
             />
           </div>
           <p style={divStyle}>
