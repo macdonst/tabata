@@ -81,13 +81,15 @@ class Tabata extends Component {
 
   progress() {
     const current = this.workout.shift();
-    if (current.phase === 'workout') {
-      const rounds = this.state.completedRounds + 1;
-      this.setState({ completedRounds: rounds });
-    } else if (current.phase === 'break') {
-      this.setState({ completedRounds: 0 });
+    if (current) {
+      if (current.phase === 'workout') {
+        const rounds = this.state.completedRounds + 1;
+        this.setState({ completedRounds: rounds });
+      } else if (current.phase === 'break') {
+        this.setState({ completedRounds: 0 });
+      }
+      this.setState(current);
     }
-    this.setState(current);
   }
 
   handleSecond(second) {
