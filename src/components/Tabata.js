@@ -29,6 +29,7 @@ class Tabata extends Component {
     this.togglePause = this.togglePause.bind(this);
     this.createWorkout = this.createWorkout.bind(this);
     this.renderRounds = this.renderRounds.bind(this);
+    this.handleSecond = this.handleSecond.bind(this);
     this.state = {
       color: '#000',
       alpha: 0.9,
@@ -89,6 +90,18 @@ class Tabata extends Component {
     this.setState(current);
   }
 
+  handleSecond(second) {
+    console.log(second);
+    if (second <= 3 && second >= 1) {
+      console.log('beep');
+      this.beep.play();
+    }
+    if (second === 0) {
+      console.log('play done');
+      this.chime.play();
+    }
+  }
+
   togglePause() {
     this.setState({
       paused: !this.state.paused
@@ -120,6 +133,7 @@ class Tabata extends Component {
               size={300}
               paused={this.state.paused}
               onComplete={this.progress}
+              onSecond={this.handleSecond}
             />
           </div>
           <p style={divStyle}>
@@ -142,6 +156,22 @@ class Tabata extends Component {
           style={btnStyle}
           onClick={this.togglePause}
         />
+        <audio
+          src="/audio/beep.mp3"
+          ref={audio => {
+            this.beep = audio;
+          }}
+        >
+          Your browser does not support the audio element.
+        </audio>
+        <audio
+          src="/audio/chime.mp3"
+          ref={audio => {
+            this.chime = audio;
+          }}
+        >
+          Your browser does not support the audio element.
+        </audio>
       </React.Fragment>
     );
   }
