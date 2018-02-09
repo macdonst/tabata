@@ -3,9 +3,12 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
 class NumberSelectField extends SelectField {
-  state = {
-    value: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: props.value
+    };
+  }
 
   handleChange = (event, index, value) => this.setState({ value });
 

@@ -3,10 +3,14 @@ import AppBar from 'material-ui/AppBar';
 import PropTypes from 'prop-types';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import Dialog from 'material-ui/Dialog';
 import Tabata from './Tabata';
+import { Route } from 'react-router-dom';
 
 const style = {
   margin: 0,
@@ -29,12 +33,13 @@ class TabataPage extends Component {
     this.deleteTabata = this.deleteTabata.bind(this);
     this.state = {
       open: false,
+      id: null,
       tabata: null
     };
   }
 
   componentWillMount() {
-    this.setState({ tabata: this.props.tabata });
+    this.setState({ id: this.props.id, tabata: this.props.tabata });
   }
 
   handleOpen() {
@@ -66,9 +71,33 @@ class TabataPage extends Component {
             </IconButton>
           }
           iconElementRight={
-            <IconButton onClick={this.handleOpen}>
-              <DeleteIcon />
-            </IconButton>
+            <IconMenu
+              iconButtonElement={
+                <IconButton>
+                  <MoreVertIcon />
+                </IconButton>
+              }
+              anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
+              targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+            >
+              <MenuItem primaryText="Delete" onClick={this.handleOpen} />
+              <Route
+                key={this.state.tabata.key}
+                render={({ history }) => (
+                  <MenuItem
+                    primaryText="Edit"
+                    onClick={event => {
+                      console.log('ack');
+                      console.log(this.state.tabata);
+                      history.push({
+                        pathname: '/create',
+                        state: { id: this.state.id, tabata: this.state.tabata }
+                      });
+                    }}
+                  />
+                )}
+              />
+            </IconMenu>
           }
           title={this.state.tabata.name}
         />

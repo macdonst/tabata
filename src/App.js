@@ -76,7 +76,12 @@ class App extends Component {
             />
             <Route
               path="/create"
-              render={() => <CreateTabataPage addTabata={this.addTabata} />}
+              render={() => (
+                <CreateTabataPage
+                  addTabata={this.addTabata}
+                  updateTabata={this.updateTabata}
+                />
+              )}
             />
             <Route
               path="/tabata/:id"
@@ -84,6 +89,7 @@ class App extends Component {
                 const tabata = this.getTabata(props.match.params.id);
                 return (
                   <TabataPage
+                    id={props.match.params.id}
                     tabata={tabata}
                     removeTabata={this.removeTabata}
                     updateTabata={this.updateTabata}

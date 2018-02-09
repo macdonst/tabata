@@ -17,9 +17,48 @@ class CreateTabataPage extends Component {
     router: PropTypes.object
   };
 
+  constructor() {
+    super();
+    this.state = {
+      id: null,
+      tabata: {
+        name: '',
+        warmupTime: 0,
+        workoutTime: 0,
+        restTime: 0,
+        breakTime: 0,
+        cooldownTime: 0,
+        rounds: '',
+        sets: ''
+      }
+    };
+  }
+
+  componentWillMount() {
+    if (this.context.router.route.location.state) {
+      this.setState({
+        id: this.context.router.route.location.state.id || null,
+        tabata: {
+          name: this.context.router.route.location.state.tabata.name || '',
+          warmupTime:
+            this.context.router.route.location.state.tabata.warmupTime || 0,
+          workoutTime:
+            this.context.router.route.location.state.tabata.workoutTime || 0,
+          restTime:
+            this.context.router.route.location.state.tabata.restTime || 0,
+          breakTime:
+            this.context.router.route.location.state.tabata.breakTime || 0,
+          cooldownTime:
+            this.context.router.route.location.state.tabata.cooldownTime || 0,
+          rounds: this.context.router.route.location.state.tabata.rounds || '',
+          sets: this.context.router.route.location.state.tabata.sets || ''
+        }
+      });
+    }
+  }
+
   saveTabata() {
     console.log('save tabata');
-    console.log(this.warmupTime);
     const tabata = {
       name: this.workoutName.input.value,
       warmupTime: this.warmupTime.state.value,
@@ -30,7 +69,11 @@ class CreateTabataPage extends Component {
       rounds: this.rounds.input.value,
       sets: this.sets.input.value
     };
-    this.props.addTabata(tabata);
+    if (this.state.id) {
+      this.props.updateTabata(this.state.id, tabata);
+    } else {
+      this.props.addTabata(tabata);
+    }
     this.context.router.history.goBack();
   }
 
@@ -56,6 +99,10 @@ class CreateTabataPage extends Component {
               ref={input => {
                 this.workoutName = input;
               }}
+              value={this.state.tabata.name}
+              onChange={e =>
+                this.setState({ tabata: { name: e.target.value } })
+              }
             />
             <NumberSelectField
               floatingLabelText="Warm Up"
@@ -63,6 +110,7 @@ class CreateTabataPage extends Component {
               ref={input => {
                 this.warmupTime = input;
               }}
+              value={this.state.tabata.warmupTime}
             />
             <NumberSelectField
               floatingLabelText="Work Out"
@@ -70,6 +118,7 @@ class CreateTabataPage extends Component {
               ref={input => {
                 this.workoutTime = input;
               }}
+              value={this.state.tabata.workoutTime}
             />
             <NumberSelectField
               floatingLabelText="Rest"
@@ -77,6 +126,7 @@ class CreateTabataPage extends Component {
               ref={input => {
                 this.restTime = input;
               }}
+              value={this.state.tabata.restTime}
             />
             <NumberSelectField
               floatingLabelText="Break"
@@ -84,6 +134,7 @@ class CreateTabataPage extends Component {
               ref={input => {
                 this.breakTime = input;
               }}
+              value={this.state.tabata.breakTime}
             />
             <NumberSelectField
               floatingLabelText="Cool Down"
@@ -91,6 +142,7 @@ class CreateTabataPage extends Component {
               ref={input => {
                 this.cooldownTime = input;
               }}
+              value={this.state.tabata.cooldownTime}
             />
             <TextField
               floatingLabelText="Rounds"
@@ -99,6 +151,10 @@ class CreateTabataPage extends Component {
                 this.rounds = input;
               }}
               type="number"
+              value={this.state.tabata.rounds}
+              onChange={e =>
+                this.setState({ tabata: { rounds: e.target.value } })
+              }
             />
             <TextField
               floatingLabelText="Sets"
@@ -107,6 +163,10 @@ class CreateTabataPage extends Component {
                 this.sets = input;
               }}
               type="number"
+              value={this.state.tabata.sets}
+              onChange={e =>
+                this.setState({ tabata: { sets: e.target.value } })
+              }
             />
           </div>
         </Paper>
